@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/header') -%>
+        <link rel="stylesheet" href="../css/User_Page.css">
+        <title>profilesPage</title>
+        <script src="../js/jqcode.js"></script>
+        <script src="../js/getFeed.js" defer></script>
+</head>
+
+<body>
+    <%- include ('../partials/navbar') -%>
+
+
+        <div class="d-flex btn-group">
+            <button id="profile" class="btn btn-primary t-btn">Profile</button>
+            <button id="tags" class="btn btn-secondary t-btn">Tags</button>
+            <button id="location" class="btn btn-secondary t-btn">Location</button>
+        </div>
+
+        <div id="search_options">
+            <h4 class="gls_morph m-lg-5 p-lg-5 m-sm-1 p-sm-1">Wait, Profile is being loaded !</h4>
+        </div>
+
+
+        <script>
+            window.addEventListener('load', () => {
+                searchRequest('<%= queries %>');
+            });
+        </script>
+
+        <script>
+            $(document).ready(function () {
+                $('#showlocation').hide();
+                $('#showtags ').hide();
+
+                $('#profile').on('click', function () {
+                    $('#showlocation').hide();
+                    $('#showtags').hide();
+                    $('#showprofile').show();
+
+                    $('.t-btn').removeClass('btn-primary');
+                    $('.t-btn').addClass('btn-secondary');
+                    $(this).removeClass('btn-secondary').addClass('btn-primary')
+                });
+                $('#location').on('click', function () {
+                    $('#showprofile').hide();
+                    $('#showtags').hide();
+                    $('#showlocation').show();
+
+                    $('.t-btn').removeClass('btn-primary');
+                    $('.t-btn').addClass('btn-secondary');
+                    $(this).removeClass('btn-secondary').addClass('btn-primary')
+                });
+                $('#tags').on('click', function () {
+                    $('#showprofile').hide();
+                    $('#showtags').show();
+                    $('#showlocation').hide();
+
+                    $('.t-btn').removeClass('btn-primary');
+                    $('.t-btn').addClass('btn-secondary');
+                    $(this).removeClass('btn-secondary').addClass('btn-primary')
+                });
+            });
+        </script>
+
+        <%- include ('../partials/bubbles') -%>
+        <%- include ('../partials/footer') -%>
+
+</body>
+
+</html>

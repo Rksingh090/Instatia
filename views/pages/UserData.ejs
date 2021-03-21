@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/header') -%>
+        <link rel="stylesheet" href="../css/User_Page.css">
+
+
+        <title>HomePage</title>
+</head>
+
+<body>
+    <%- include ('../partials/navbar') -%>
+
+        <div class="first-circle"></div>
+        <div class="second-circle"></div>
+
+
+        <div id="profile_option">
+            <h4 class="gls_morph m-lg-5 p-lg-5 m-sm-1 p-sm-1 m-md-2 p-md-1 m-lg-3 p-lg-2 m-1 p-1">Wait, Profile is being
+                loaded !</h4>
+        </div>
+
+        <div id="insta-feed"></div>
+
+
+
+
+
+        <script>
+            function downloadImg(img, _width, _height) {
+                var canvas = document.getElementById("mycanvas");
+
+                canvas.setAttribute('width', _width);
+                canvas.setAttribute('height', _height);
+
+                var ctx = canvas.getContext("2d");
+                ctx.drawImage(img, 0, 0);
+                var ranname = Math.random(45);
+                ranname = Math.floor(ranname * 100000 * 100000);
+
+                canvas.toBlob(function (blob) {
+                    saveAs(blob, "sitename_" + ranname + ".png");
+                },'image/jpeg',0.95);
+            }
+
+
+            window.addEventListener('load', () => {
+                getProfile('<%= user %>');
+
+                var downloader = document.querySelectorAll('.imgdownload');
+                downloader.forEach(elem => {
+                    elem.addEventListener('click', () => {
+                        var imgid = elem.getAttribute('id')
+                        var img = document.querySelector('.' + imgid);
+
+                        var img_height = img.clientHeight;
+                        var img_width = img.clientWidth;
+                        console.log(img);
+                        downloadImg(img, img_width, img_height);
+                    });
+                });
+
+            });
+            $('.carousel').carousel({
+                interval: false,
+            });
+
+
+        </script>
+        <%- include ('../partials/bubbles') -%>
+            <!-- <%- include ('../partials/footer') -%> -->
+
+            <script src="../js/jqcode.js" defer></script>
+            <script src="../js/getFeed.js" defer></script>
+            <script src="../js/getProfile.js" defer></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"></script>
+            <script src="../assets/bootstrap453/js/bootstrap.min.js" defer></script>
+</body>
+
+</html>

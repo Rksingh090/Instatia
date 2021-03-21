@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/header') -%>
+        <link rel="stylesheet" href="../css/User_Page.css">
+        <title>HomePage</title>
+</head>
+
+<body>
+    <%- include ('../partials/navbar') -%>
+    
+        <div id="insta-feed"></div>
+        <script>
+
+            window.addEventListener('load', () => {
+                getTag('<%= tag %>');
+            });
+
+        </script>
+
+        <%- include ('../partials/bubbles') -%>
+            <%- include ('../partials/footer') -%>
+
+            <script src="../js/getTag.js" defer></script>
+            <script src="../js/jqcode.js" defer></script>
+            <script src="../js/getFeed.js" defer></script>
+
+</body>
+
+</html>

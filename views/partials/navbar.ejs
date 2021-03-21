@@ -1,0 +1,35 @@
+
+
+<div id="navbar" class="navbar gls_morph_no_border">
+    <div class="d-flex justify-content-space-arround align-items-center">
+        <img src="../images/lightlogo.png" class="main-logo">
+        <form action="/search" method="POST" autocomplete="off" class="nav_form d-flex">
+            <input type="search" class='main_search justify-content-center' placeholder="eg. Search" name="search" value="<% if (typeof queries == 'undefined') { %><% }else{%><%= queries %><%} %>" >
+            <input type="submit" value="search" class="main_search_btn">
+        </form>
+    </div>
+    <i class="fas fa-bars _hamb"></i>
+</div>
+
+<div class="nav-links">
+    <span class="_clsbtn">&times;</span>
+    <ul class='link_ul'>
+        <li><a href="/">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+</div>
+<script>
+    $('._hamb').click(function(){
+        $('.nav-links').css('clip-path','circle(100% at 50% 50%)');
+    });
+
+    $('._clsbtn').click(function(){
+        var j1 = Math.random(100);
+        var j2 = Math.random(100);
+        var num1 = Math.floor(j1*100);
+        var num2 = Math.floor(j2*100);
+        $('.nav-links').css('clip-path','circle(0px at '+ num1 +'% '+ num2 +'%)');
+    });
+
+</script>

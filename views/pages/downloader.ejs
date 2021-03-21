@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('../partials/header') -%>
+    <link rel="stylesheet" href="../css/User_Page.css">
+    <script src="../js/jqcode.js"></script>
+    <script src="../js/getFeed.js"></script>
+    <script src="../assets/bootstrap453/js/bootstrap.min.js"></script>
+    <title>HomePage</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"></script>
+</head>
+
+<body style="overflow-x: hidden;">
+  <%- include ('../partials/navbar') -%>
+
+
+
+    <div id="Post_data">
+      <div class="container "><div class="row gls_morph justify-content-center m-5 p-5"><h2>Data Loading in Progress......</h2></div></div>
+    </div>
+
+    
+
+
+    <script>
+      window.addEventListener('load', () => {
+        getPostData('<%= _shortcode %>');
+      });
+    </script>
+
+
+
+    <!-- 
+    <canvas id="mycanvas" style="display: none;"></canvas>
+    <img class="download1"
+      src="https://instagram.fnag1-2.fna.fbcdn.net/v/t51.2885-15/e35/162078025_110606311006705_4814263453340086312_n.jpg?tp=1&_nc_ht=instagram.fnag1-2.fna.fbcdn.net&_nc_cat=101&_nc_ohc=NgvI0KGEXMcAX_D09NG&ccb=7-4&oh=185843558c5c9a070ca1a60aa29fe186&oe=6057C3C4&_nc_sid=83d603"
+      alt="Cityscape" crossorigin="anonymous">
+    <button id="download1" class="imgdownload">download1</button>
+
+    <img class="download2"
+      src="https://instagram.fiev22-2.fna.fbcdn.net/v/t51.2885-15/e35/p1080x1080/161405238_839832626747077_4938707110356573703_n.jpg?tp=1&_nc_ht=instagram.fiev22-2.fna.fbcdn.net&_nc_cat=101&_nc_ohc=p5WCqm9KDwIAX8tPdky&ccb=7-4&oh=aa06f1f93de66d4172a01625c8db0cff&oe=607F6A4B&_nc_sid=4f375e"
+      alt="Cityscape" crossorigin="anonymous">
+    <button id="download2" class="imgdownload">download2</button>
+
+    <img class="download3"
+      src="https://instagram.fiev22-2.fna.fbcdn.net/v/t51.2885-15/e35/p1080x1080/161501532_3145841765643268_5032333307968383710_n.jpg?tp=1&_nc_ht=instagram.fiev22-2.fna.fbcdn.net&_nc_cat=104&_nc_ohc=KJ7_CUcZA3sAX9uwq7p&ccb=7-4&oh=422bfd1141abdbcd7002408e0b9240d7&oe=607D9DC7&_nc_sid=4f375e"
+      alt="Cityscape" crossorigin="anonymous">
+    <button id="download3" class="imgdownload">download3</button>
+
+
+    <script>
+      var downloader = document.querySelectorAll('.imgdownload')
+      downloader.forEach(elem => {
+        elem.addEventListener('click', () => {
+          var imgid = elem.getAttribute('id')
+          var img = document.querySelector('img[class="'+ imgid +'"]');
+
+          var img_height = img.clientHeight;
+          var img_width = img.clientWidth;
+
+          downloadImg(img,img_width,img_height);
+        });
+      });
+      
+      function downloadImg(img,_width,_height) {
+        var canvas = document.getElementById("mycanvas");
+
+        console.log(canvas.getAttribute('width'));
+        console.log(canvas.getAttribute('height'));
+
+        canvas.setAttribute('width',_width);
+        canvas.setAttribute('height',_height);
+
+        console.log(canvas.getAttribute('width'));
+        console.log(canvas.getAttribute('height'));
+
+        var ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0);
+        var ranname = Math.random(45);
+        ranname = Math.floor(ranname * 100000*100000);
+
+        canvas.toBlob(function (blob) {
+          saveAs(blob, "sitename_"+ranname+".png");
+        });
+      }
+    </script> -->
+
+
+</body>
+
+</html>
